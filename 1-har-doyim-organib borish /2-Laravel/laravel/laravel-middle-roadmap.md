@@ -1,112 +1,224 @@
-## Laravel Senior Roadmap — Yozgi Maksimal Dasturchilik Rejasi
-
-### Maqsad:
-
-PHP / Laravel bo‘yicha yozda o‘zini Senior darajagacha olib chiqish. Har kuni 2-3 soat ajratiladi. Maqsad — Laravel frameworkni ich-ichidan bilish, arxitektura, performance, testing, scaling, va real-time tizimlarda mustahkam ishlay olish.
 
 ---
 
-## MODUL 1: Laravel Ichki Tizimlari va Core Mexanizmlar (1-hafta)
+# 🧠 **Chuqurlashtirilgan Laravel Senior Roadmap (Middle → Senior)**
 
-### Mavzular:
-
-* Laravel Lifecycle: request > router > middleware > controller > response
-* HTTP Kernel vs Console Kernel
-* Service Container, Dependency Injection (bind, singleton, make)
-* Facade mexanizmi va Macroable trait
-* Custom Service Provider yozish
-* Laravel Exception handling mexanizmi
-* Laravel Events & Listeners (sync va async)
-* Laravel Collection ichki ishlashi
-* Laravel config va environment architecture
-
-### Amaliyot:
-
-* `CurrencyService` paketini yoz — service provider, facade va config bilan
-* `UserActivityLogger` yoz — custom event va listener bilan
+## 🔹 Tartiblangan Mavzular Bo'yicha To'liq Ro'yxat (Sortirovka qilingan)
 
 ---
 
-## MODUL 2: Arxitektura va Scale (2-hafta)
+## 🟡 1. Laravel Core Internals
 
-### Mavzular:
-
-* Modular architecture (packages/ ichida har modul)
-* Multi-tenancy: database, schema va row level isolation
-* Laravel Octane (Swoole bilan)
-* Redis bilan queue, cache, pub/sub
-* Advanced Caching strategies (tag cache, response cache, route cache)
-* Queue performance, delayed queue, failed jobs
-* Laravel Horizon
-* Config caching, route caching
-* API performance measurement (Laravel Telescope, Laravel Debugbar)
-* Database optimization: Index, Eager Loading, Query Profiling
-
-### Amaliyot:
-
-* Modular task manager yoz: user, project, task package’lari
-* Redis bilan queue job yoz: background email sender
-* Laravel Horizon orqali monitor qilish
+### ⚙️ Asosiy Tushunchalar
+- Laravel Lifecycle: Request > Router > Middleware > Controller > Response
+- HTTP Kernel vs Console Kernel farqi
+- Service Container ichki ishlashi (`bind`, `singleton`, `make`)
+- Facade mexanizmi: `__callStatic`, `getFacadeAccessor`
+- Macroable trait va uning ishlatilishi (Collection, Response, Request)
+- Custom Service Provider yozish
+- Laravel Exception handler mexanizmi (`App\Exceptions\Handler`)
+- Laravel Collection ichki ishlashi (`map`, `filter`, `reduce`, `pipe`)
+- Laravel config architecture: `.env`, `config/`, `php artisan config:cache`
 
 ---
 
-## MODUL 3: Microservice, DDD, Real-Time, CI/CD (3-hafta va 4-hafta)
+## 🟢 2. Laravel Events, Listeners & Observers
 
-### Mavzular:
-
-* Domain Driven Design:
-
-  * Entity, Value Object, Aggregate Root
-  * Application Layer, Domain Layer, Infrastructure Layer
-* Repository pattern, Service pattern
-* CQRS pattern + Event Sourcing
-* Laravel + gRPC / HTTP microservice arxitektura
-* Docker bilan Laravel (docker-compose, network, volume)
-* Redis pub/sub bilan real-time
-* Laravel Websockets vs Pusher
-* Laravel Echo server va Vue/React bilan integratsiya
-* GitHub Actions bilan Laravel CI/CD
-* Migration strategy: zero downtime deploy
-* Feature flaglar, rollback strategiyalar
-
-### Amaliyot:
-
-* Real-time chat yoki notification tizimi yozish
-* Docker bilan containerized Laravel app yaratish
-* CI/CD pipeline yozish (test > build > deploy)
-* Service’lararo API kommunikatsiya yozish (Auth > Blog > Comment)
+### 🎯 Event-driven Development
+- Laravel Event & Listener: sync vs async
+- Event Sourcing asoslari
+- Broadcast eventlar (Pusher, Redis, Echo)
+- Model Observers (creating, created, updating, etc.)
+- Queued Listeners
+- Event Subscribers
 
 ---
 
-## BONUS MAVZULAR (O‘zini sinash uchun):
+## 🔵 3. Arxitektura & Scalability
 
-* Laravel bilan GraphQL (Lighthouse)
-* Laravel + PostgreSQL advanced features (jsonb, full-text search)
-* Self-healing systems: queue retry, job chaining
-* Rate Limiting, API Throttling (Laravel RateLimiter)
-* Clean Code va SOLID prinsiplar
-* PSR-standartlar: PSR-1, PSR-4, PSR-12
+### 🏗️ Modularity
+- Modular arxitektura: `app/Modules`, `Packages/`, Composer bilan alohida modullar
+- Multi-tenancy turlari:
+  - Database per tenant
+  - Schema per tenant
+  - Row-level isolation (Landlord, Stancl/Tenancy)
+- Repository pattern + Service pattern + Interface segregation
 
----
-
-## O‘RGANISH USLUBI (kunlik tavsiya):
-
-* 1 soat nazariya o‘qish (documentation, video, blog)
-* 1 soat kodlash (masalan: test loyihada sinash)
-* 1 soat amaliy loyiha yoki real case ustida ishlash
-
----
-
-## YAKUNIY MAQSAD
-
-* Laravel ichki mexanizmlarini tushunadigan
-* Katta miqyosdagi SaaS yoki microservice loyihani mustaqil arxitektura qiladigan
-* Deployment, test, scale qilishni biladigan
-* Laravelni ichidan tashqarigacha o‘zlashtirgan haqiqiy Senior daraja
+### 🚀 Performance Optimization
+- Laravel Octane (Swoole, RoadRunner)
+- Advanced Caching:
+  - Route cache (`php artisan route:cache`)
+  - View cache (`php artisan view:cache`)
+  - Config cache (`php artisan config:cache`)
+  - Taggable Cache (Redis or Memcached)
+- Query optimization: Eager loading, N+1 problemasi, `withCount()`, `loadMissing()`
+- Telescope, Debugbar bilan profiling
 
 ---
 
-> PHP bo‘lsa ham, Go yoki Node.js developerlar havas qiladigan darajaga chiqish uchun, Laravel’ni real g'oya va professional yondashuv bilan chuqur egallash zarur.
+## 🔴 4. Queue Systems & Real-time
 
-**Sen buni uddalaysan, faqat to‘xtama!**
+### 🕒 Queue Management
+- Laravel Queue:
+  - Sync, Redis, Beanstalkd, SQS driverlari
+  - Delayed jobs, retry, failed jobs
+  - Job batching, chaining, throttling
+- Laravel Horizon — queue monitoring
+- Supervisor bilan daemon qilish
+
+### 💬 Real-time Features
+- Laravel WebSockets vs Pusher integratsiya
+- Redis pub/sub bilan real-time yangilanishlar
+- Laravel Echo server + Vue/React bilan integratsiya
+- Presence channels, Private channels
+- Broadcasting events to frontend
+
+---
+
+## 🟣 5. Docker, CI/CD, Deployment
+
+### 📦 Docker & DevOps
+- Dockerfile yozish: PHP-FPM, Nginx, MySQL, Redis
+- `docker-compose.yml` bilan environment sozlash
+- Volume, network, build args
+- Laravel Sail bilan ishlash
+- Laravel Forge integration
+
+### 🛠️ CI/CD Pipelines
+- GitHub Actions bilan Laravel CI/CD pipeline yaratish
+- Test (PHPUnit), Build (npm), Deploy (SSH, Envoy)
+- Zero-downtime deployment strategiyalari:
+  - Symbolic link (`current`, `release`, `shared`)
+  - Envoy SSH deployment
+- Feature flags, Rollback strategiyalar
+- Env variables management (Vault, DotEnv)
+
+---
+
+## 🟤 6. Microservices & DDD
+
+### 🧩 Domain Driven Design
+| Komponent | Izoh |
+|----------|------|
+| Entity | O'ziga xos identifikatorga ega obyekt |
+| Value Object | Identifikatorsiz qiymat |
+| Aggregate Root | Boshqaruv markazi |
+| Application Layer | Use-case logika |
+| Domain Layer | Biznes qoidalari |
+| Infrastructure Layer | DB, API, External servislar |
+
+### 🌐 Microservice Architecture
+- gRPC vs REST vs GraphQL
+- Service discovery
+- Laravel + gRPC integratsiya (ProtoBuf)
+- Shared model yoki independent service?
+- Auth microservice (JWT, OAuth2, Laravel Passport)
+- Cross-service communication (events, queues)
+
+---
+
+## 🟠 7. Testing & Debugging
+
+### 🧪 Testing Types
+| Test turi | Foydalanish joyi |
+|----------|------------------|
+| Unit test | Obyekt ichki ishlashini tekshirish |
+| Feature test | HTTP so'rovlar, response |
+| Pest | PhpUnitga alternativa |
+| Dusk | Browser testing (E2E) |
+| Mocking | Dependency mock qilish |
+| Factories | Test ma'lumot yaratish |
+| Seeders | Databazani dastlabki ma'lumot bilan toldirish |
+| PEST | BDD usulidagi test frameworki |
+
+### 🛠️ Debugging Tools
+- Xdebug + PhpStorm integratsiya
+- Laravel Telescope
+- Laravel Debugbar
+- Blackfire.io bilan performance profiling
+- Log monitoring (Monolog, Papertrail, Sentry)
+
+---
+
+## 🟢 8. Bonus: Senior-Level Features
+
+| Mavzu | Izoh |
+|------|------|
+| Laravel CQRS | Command / Query Responsibility Segregation |
+| Laravel GraphQL | Lighthouse paketi orqali schema yaratish |
+| PostgreSQL JSONB | Complex data structure bilan ishlash |
+| Laravel Scout + MeiliSearch | Full-text search engine |
+| Laravel Cashier | Stripe integratsiya |
+| Laravel Jetstream | Inertia.js, Livewire, Teams |
+| Laravel Socialite | OAuth integratsiya (Google, Facebook) |
+| Laravel Breeze | Minimal auth stack |
+| Laravel Pint | PHP code style checker |
+| Laravel Pekka | PHPStan bilan integratsiya |
+
+---
+
+## 🧾 Nazorat Savollari (Self-check)
+
+### Laravel Core
+- Service Container nima uchun kerak? `bind()` vs `singleton()` farqi?
+- Facade mexanizmi qanday ishlaydi?
+- Laravel lifecycle qanday ketadi?
+
+### Arxitektura
+- Modular loyiha qanday tuziladi?
+- Multi-tenant tizim qanday yaratiladi?
+- Repository + Service pattern nima uchun kerak?
+
+### Queue & Realtime
+- Laravel queue job’larni qanday priority qo'shiladi?
+- Redis pub/sub bilan real-time notifikatsiya qanday yoziladi?
+
+### DDD & Microservices
+- Entity vs Value Object farqi?
+- CQRS nima va qachon qo'llaniladi?
+- gRPC vs REST farqi?
+
+### CI/CD
+- Zero-downtime deploy qanday amalga oshiriladi?
+- GitHub Actions bilan Laravel test-deploy pipeline qanday yoziladi?
+
+---
+
+## 📚 Tavsiya Etiladigan Manbalar
+
+### Laravel
+- [Laravel Documentation](https://laravel.com/docs)
+- Laravel Beyond CRUD (konferensiya video)
+- Laravel Shift (automated upgrade tool)
+- Laravel News (yangiliklar, best practices)
+
+### DevOps
+- Docker — From Zero to Hero
+- GitHub Actions for CI/CD
+- Laravel Forge documentation
+
+### Testing
+- Laravel Testing Decoded
+- PestPHP docs
+- PHPUnit official guide
+
+---
+
+## ✅ Yakuniy Natija
+
+Agar barcha ushbu mavzularni chuqur o'rgangan bo'lsangiz:
+
+✅ **Senior Laravel Developer** sifatida ishonch bilan kirishingiz mumkin  
+✅ **Katta miqyosdagi SaaS, Microservice loyihalarni mustaqil arxitektura qila olasiz**  
+✅ **Deployment, test, scale qilishni bilasiz**  
+✅ **Laravel bilan real-time, queue, caching, multi-tenant tizimlar qura olasiz**
+
+---
+
+> **Maslahat:** Har bir mavzuga alohida mini-proyekt yozing. Masalan:  
+> - `CurrencyService` → service provider, facade, config  
+> - `RealTimeChat` → Redis, WebSockets, Echo  
+> - `ModularTaskManager` → Modules, Repositories, Services  
+
+---
 

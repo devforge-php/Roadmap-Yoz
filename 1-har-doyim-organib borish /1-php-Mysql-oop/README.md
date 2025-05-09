@@ -1,114 +1,240 @@
-## PHP va MySQL Senior Roadmap — Maksimal Yozgi Reja
-
-### Maqsad:
-
-Laravel bilan birga PHP va MySQL bo‘yicha ham Senior darajagacha o‘zlashtirish. Har kuni 2-3 soat ajratiladi. Maqsad — PHPni OOP asosida to‘liq egallash, MySQLni esa performance, indexing, replication darajagacha tushunish.
 
 ---
 
-## MODUL 1: PHP Advanced & OOP Mastery (1-hafta)
+# 🧠 **Chuqurlashtirilgan PHP, MySQL & OOP Roadmap (Middle → Senior)**
 
-### Mavzular:
-
-* PHP Core: memory model, execution process
-* OOP Advanced: Inheritance, Polymorphism, Abstraction, Interfaces
-* Traits, Late Static Binding
-* Namespaces, Autoloading (PSR-4)
-* Composer bilan package yaratish
-* SPL (Standard PHP Library)
-* Magic Methods (\_\_get, \_\_set, \_\_call, \_\_invoke, etc.)
-* Anonymous classes & Closures
-* Design Patterns:
-
-  * Singleton
-  * Factory
-  * Strategy
-  * Observer
-  * Dependency Injection
-  * Adapter, Decorator
-* Exception handling (custom exceptions)
-* PHP 8.x yangi imkoniyatlari: attributes, named arguments, union types, match
-
-### Amaliyot:
-
-* `FileManager` class yoz trait bilan
-* `PaymentGateway` interface + polymorphic to‘lov tizimi
-* Design Pattern har birini alohida mini-loyihada sinash
+## 🔹 Tartiblangan Mavzular Bo'yicha To'liq Ro'yxat (Sortirovka qilingan)
 
 ---
 
-## MODUL 2: PHP Deep Practices + Testing (2-hafta)
+## 🟡 1. PHP Core Chuqur Bilsen Kerak
 
-### Mavzular:
+### ⚙️ Asosiy Tushunchalar
+- PHP execution lifecycle: parse, compile, execute
+- Memory management: variable scoping, references, garbage collection
+- Opcode cache: OPcache ishlashi
+- PHP.ini konfiguratsiya tushunchalari
+- PHP CLI vs Web Server modlari
 
-* Unit Testing (PHPUnit)
-* Test Coverage va Test-Driven Development (TDD)
-* Mocking va stubbing
-* Static analysis tools: PHPStan, Psalm
-* PHP performance profiling (Xdebug, Blackfire)
-* Error Handling va Logging
-* Secure coding: XSS, CSRF, SQL Injection, Session hijacking
-* Secure session va cookie handling
-* Email yuborish (SMTP, Mailtrap)
-* File upload, sanitize, validation, storage
-* PDF va Excel generatsiya qilish
-
-### Amaliyot:
-
-* `Booking` tizimi yoz va uni test bilan 90%+ qamrab ol
-* XSS, SQL Injection qilingan kodni tahlil qilib tozalash
+### 💡 Kengaytirilgan Tushunchalar
+- `heredoc` / `nowdoc`
+- Type juggling & type coercion
+- Magic constants (`__LINE__`, `__FILE__`, etc.)
+- Variable variables, variable functions
+- Late Static Binding chuquriroq: static vs self farqi
+- SPL (Standard PHP Library): `SPLAutoloader`, `SplObjectStorage`, `ArrayAccess`, `Iterator`
 
 ---
 
-## MODUL 3: MySQL Advanced (3-hafta)
+## 🟢 2. Object-Oriented Programming (OOP) in PHP
 
-### Mavzular:
+### 🧱 OOP Asoslari
+- Class, object, properties, methods
+- Encapsulation, Abstraction, Inheritance, Polymorphism
+- Visibility: public, protected, private
+- Constructor / Destructor, Dependency Injection
 
-* Index: B-Tree, Hash, Composite
-* Query Optimization: EXPLAIN, slow query log
-* Joins: INNER, LEFT, RIGHT, FULL
-* Subqueries, Derived Tables
-* Transactions, Isolation Levels
-* Stored Procedures, Triggers, Functions
-* Views va Materialized Views
-* Full-Text Search (InnoDB vs MyISAM)
-* Replication (master-slave)
-* Partitioning, Sharding
-* Backup / Restore strategiyalari
+### 🧩 OOP Qulayliklar
+- Traits: method overriding, conflict resolution
+- Interfaces: multiple inheritance simulation
+- Abstract classes vs interfaces
+- Anonymous classes
+- Closures as objects (`Closure::bindTo()`)
 
-### Amaliyot:
+### 📦 Namespaces & Autoloading
+- PSR-4 standarti bilan autoloading
+- Composer bilan package yaratish va ulash
+- Composer scripts, autoload optimizatsiya
 
-* `eCommerce` schema dizayni, indexing bilan
-* `Audit Log` trigger yozish
-* Master-Slave architecture lokalda qurish
-
----
-
-## BONUS MAVZULAR
-
-* Redis bilan session va cache ishlatish (PHP native + Laravel integration)
-* PostgreSQLga kirish: JSONB, GIN indexlar
-* SQLite bilan tez test muhitlari yaratish
-* RabbitMQ yoki Kafka bilan integratsiya qilish (basic)
-
----
-
-## O‘RGANISH USLUBI (kunlik tavsiya):
-
-* 1 soat nazariya (kitoblar, documentation)
-* 1 soat kodlash (masalan: patternni loyihada sinash)
-* 1 soat amaliy loyiha yoki o‘zining systemasini yozish
+### 🎭 Design Patterns (Senior Darajada)
+| Pattern | Foydalanish joyi |
+|--------|------------------|
+| Factory | Obektlarni mos tarzda yaratish |
+| Singleton | Bir martta obyekt yaratish |
+| Strategy | Algoritmlarni almashtirish |
+| Observer | Event-based dasturlash |
+| Repository | Data accessni abstraksiya qilish |
+| Service Locator | Servislarga kirish |
+| Decorator | Run-time kengaytirish |
+| Adapter | Yangi APIga moslash |
+| Flyweight | Xotirani tejash |
+| Command | Amallarni obyektga aylantirish |
 
 ---
 
-## YAKUNIY MAQSAD
+## 🔵 3. PHP Performance & Optimization
 
-* PHP OOP asoslarini har tomondan egallagan
-* Design Patternlarni ishlatib mustahkam arxitektura qiladigan
-* MySQL’ni performance, optimization va replication darajasida tushunadigan
-* Katta tizimlar uchun backend dasturchilikni mustaqil bajara oladigan daraja
+### ⚡️ Tezlikni Oshirish
+- Opcode caching (OPcache)
+- Composer autoloader optimize (`composer dump-autoload -o`)
+- PHP-FPM tuning
+- Opcode analiz (Xdebug, Blackfire)
+- Memory profiling
+
+### 🛡️ Xavfsizlik
+- XSS, CSRF himoya mexanizmlari
+- SQL injection (PDO/MySQLi + prepared statements)
+- Session security (regenerate, secure cookie, httponly)
+- Password hashing (password_hash(), password_verify())
+- File upload validation (MIME, extension, size)
+- CSP (Content Security Policy)
 
 ---
 
-> Laravel bu skelet. Asl kuch esa PHP va MySQL’da. Shu kuchni egallasang — backend real ustasi bo‘lasan.
+## 🔴 4. MySQL Advanced (Senior Level)
+
+### 🗃️ Database Structure
+- Normalizatsiya (1NF, 2NF, 3NF)
+- Denormalization sabablari
+- Index turlari:
+  - B-Tree
+  - Hash
+  - Full-text
+  - Spatial
+  - Composite index
+- Covering index
+
+### 🔍 Query Optimization
+- EXPLAIN plan tahlili
+- Slow query log
+- JOIN turlari:
+  - INNER, LEFT, RIGHT, FULL OUTER
+  - Self join, cross join
+- Subqueries vs CTE
+- Derived tables
+- Optimizing GROUP BY, ORDER BY, LIMIT
+
+### 🔄 Transactions & Concurrency
+- ACID prinsiplar
+- Isolation levels:
+  - Read Uncommitted
+  - Read Committed
+  - Repeatable Read
+  - Serializable
+- Deadlock tahlili
+- Locking mechanisms
+
+### 🏗️ Stored Procedures, Triggers, Events
+- Stored procedures vs functions
+- OUT / INOUT parameters
+- Trigger (BEFORE/AFTER INSERT/UPDATE/DELETE)
+- Events for cron-like tasks
+
+### 📊 Views & Materialized Views
+- View vs Materialized View
+- Recursive CTE bilan view
+
+### 🔁 Replication & Scalability
+- Master-Slave replication
+- Binary logs
+- Read-write split
+- Connection pooling
+- Sharding (gorizontal bo'lish)
+- Partitioning (vertikal bo'lish)
+
+### 📦 Backup & Recovery
+- mysqldump
+- Percona XtraBackup
+- Point-in-Time Recovery (PITR)
+- Binary log recovery
+
+---
+
+## 🟣 5. Advanced SQL Concepts
+
+| Mavzu | Izoh |
+|------|------|
+| Window Functions | RANK(), DENSE_RANK(), ROW_NUMBER() |
+| JSON data type | JSON_STORAGE_SIZE, JSON_CONTAINS |
+| Common Table Expressions (CTE) | Rekursiv so'rovlar |
+| Temporary Tables | Seans ichidagi provisor ma'lumotlar |
+| Generated Columns | Hisoblangan ustunlar |
+| Full Text Search | MATCH AGAINST, stop words |
+| Index hints | FORCE INDEX, IGNORE INDEX |
+| Query Cache | Eski versiyalarda foydali (8.x da olib tashlandi) |
+
+---
+
+## 🟤 6. PHP + MySQL Integration
+
+### 🧬 ORM vs Raw SQL
+- PDO vs MySQLi
+- Prepared Statements
+- ORM (Doctrine, Eloquent) ichki ishlash mexanizmi
+- N+1 problemasi va echim
+
+### 📈 Real-time Monitoring
+- MySQL slow query monitor (pt-query-digest)
+- PHP error logging (Monolog)
+- Query profiling (DebugBar, Laravel Telescope)
+
+---
+
+## 🟠 7. Bonus: Senior-Level Extensions
+
+| Extension | Foydalanish joyi |
+|----------|------------------|
+| Redis | Session, cache, rate limiting |
+| RabbitMQ / Kafka | Queue systems |
+| Memcached | Distributed cache |
+| PostgreSQL | JSONB, GIN index, window functions |
+| SQLite | Testing muhitlari |
+| Elasticsearch | Full-text search engine |
+
+---
+
+## 🧾 Nazorat Savollari (Self-check)
+
+### PHP
+- Late Static Binding nima? Misol orqali tushuntiring.
+- Trait conflict qanday hal qilinadi?
+- Design patternlardan birini loyiha ichida qanday qo'llagan bo'lasiz?
+
+### OOP
+- Interface vs Abstract class farqi?
+- Dependency Injection nima uchun kerak?
+- SOLID prinsiplarini tushuntira olasizmi?
+
+### MySQL
+- Composite index nima? Qachon qo'llaniladi?
+- JOIN qilayotganda indexdan foydalana olmaydigan holatlarni ayting?
+- Transaction isolation level nima? Serializable vs Repeatable Read farqi?
+
+---
+
+## 📚 Tavsiya Etiladigan Manbalar
+
+### PHP
+- [PHP The Right Way](https://phptherightway.com/)
+- "Modern PHP" – Josh Lockhart
+- PHP Internals Book
+
+### MySQL
+- High Performance MySQL
+- SQLZoo.net (amaliy mashqlar)
+- Explain Visualizer
+
+### OOP
+- Design Patterns: Elements of Reusable Object-Oriented Software (GoF)
+- Clean Architecture – Robert C. Martin
+
+---
+
+## ✅ Yakuniy Natija
+
+Agar barcha ushbu mavzularni chuqur o'rgangan bo'lsangiz:
+
+✅ **Middle → Senior PHP Developer** sifatida ishonch bilan kirishingiz mumkin  
+✅ **Katta loyihalarda backend arxitektura** qila olasiz  
+✅ **Optimizatsiya, xavfsizlik, performans** masalalarini mustaqil hal etasiz  
+✅ **Laravel yoki boshqa framework** ichki ishlash mexanizmlarini tushunasiz
+
+---
+
+> **Maslahat:** Har bir mavzuga alohida mini-proyekt yozing. Masalan:  
+> - `Auth system` → OOP + design pattern + security  
+> - `Blog with comments` → MySQL optimization + fulltext  
+> - `Payment gateway integration` → interface + strategy pattern  
+
+---
 
