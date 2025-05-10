@@ -1,7 +1,7 @@
 
 ---
 
-# 🧠 **Chuqurlashtirilgan Laravel Senior Roadmap (Middle → Senior)**
+# 🧠 **Chuqurlashtirilgan Laravel Middle Roadmap (Middle → Senior)**
 
 ## 🔹 Tartiblangan Mavzular Bo'yicha To'liq Ro'yxat (Sortirovka qilingan)
 
